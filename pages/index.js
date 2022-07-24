@@ -1,21 +1,21 @@
-import { doc, getDoc } from 'firebase/firestore';
+import { doc, getDoc } from 'firebase/firestore'
 import Head from 'next/head'
 import Image from 'next/image'
-import { useEffect } from 'react';
-import { db } from '../firebase';
+import { useEffect, useState } from 'react'
+import { db } from '../firebase'
 
 export default function Home() {
-  const fetchData = async() => {
-    const docRef = doc(db, "counter", "reactcounter");
-    const docSnap = await getDoc(docRef);
-    console.log(docSnap.data())
+  const fetchData = async () => {
+    const docRef = doc(db, 'counter', 'reactcounter')
+    const docSnap = await getDoc(docRef)
   }
 
   useEffect(() => {
-    fetchData();
-  },)
-  
-  return (
-   <div>Holla</div>
-  )
+    let start = performance.now();
+    fetchData()
+    let end = performance.now()
+    console.log(end - start)
+  })
+
+  return <div>Holla</div>
 }
