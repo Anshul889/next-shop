@@ -1,17 +1,25 @@
 import React from 'react'
-import { Container, Left } from './styles'
+import { DContainer, Left, Right } from './styles'
+import search from '../../images/magnifying-glass-light.svg'
+import cart from '../../images/cart-shopping-light.svg'
+import logo from '../../images/CRAVE_95cb960d-0933-4ba8-b51a-3c4853b96029_70x.webp'
+import Image from 'next/image'
 
 const Header = () => {
   return (
-    <Container>
+    <DContainer>
       <Left>
-        <div>2</div>
-        <div>234232</div>
-        <div>234</div>
-        <div>324234</div>
-        <div>1</div>
+        <Image src={logo} alt=''/>
+        <div>Shop</div>
+        <div>Meet us</div>
+        <div>Recipes</div>
+        <div>Contact</div>
       </Left>
-    </Container>
+      <Right>
+        <Image src={search} alt=''/>
+        <Image src={cart} alt=''/>
+      </Right>
+    </DContainer>
   )
 }
 
