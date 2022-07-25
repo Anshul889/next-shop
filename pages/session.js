@@ -7,7 +7,7 @@ const Session = () => {
   if (session) {
     return <button onClick={() => signOut()}>SignOut</button>
   } else {
-    ;<div>youre signed out</div>
+    return <div>youre signed out</div>
   }
 }
 

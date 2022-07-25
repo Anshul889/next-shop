@@ -1,4 +1,6 @@
 import { SessionProvider } from 'next-auth/react'
+import Header from '../components/Header/Header'
+import GlobalStyle from '../globalStyles'
 
 export default function App({
   Component,
@@ -6,6 +8,8 @@ export default function App({
 }) {
   return (
     <SessionProvider session={session}>
+      <GlobalStyle />
+      <Header />
       <Component {...pageProps} />
     </SessionProvider>
   )
