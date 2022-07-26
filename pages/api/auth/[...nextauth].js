@@ -12,12 +12,19 @@ export default NextAuth({
   pages: {
     signIn: '/auth/signin',
   },
-  secret: process.env.NEXT_AUTH_SECRET,
   callbacks: {
     async session({ session, token, user }) {
-      return session
-    },
+        session = {
+            ...session,
+            user: {
+                id: user.id,
+                ...session.user
+            }
+        }
+        return session
+      }
   },
+  secret: process.env.NEXT_AUTH_SECRET,
     adapter: FirestoreAdapter({
     apiKey: process.env.FIREBASE_API_KEY,
     appId: process.env.FIREBASE_APP_ID,
