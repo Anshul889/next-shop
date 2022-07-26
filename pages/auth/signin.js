@@ -1,7 +1,18 @@
-import React from 'react'
-import { getProviders, signIn } from 'next-auth/react'
+import React, { useEffect } from 'react'
+import { getProviders, signIn, useSession } from 'next-auth/react'
+import { useRouter } from 'next/router'
 
 const Signin = ({ providers }) => {
+  const { status } = useSession()
+  const router = useRouter()
+
+  useEffect(() => {
+    console.log(status)
+    if (status === 'authenticated') {
+      router.push('/')
+    }
+  }, [])
+
   return (
     <>
       {Object.values(providers).map((provider) => (

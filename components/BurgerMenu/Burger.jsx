@@ -1,21 +1,37 @@
-import Link from 'next/link';
+import Link from 'next/link'
 import { slide as Menu } from 'react-burger-menu'
-import React from 'react';
-import {menustyles} from './styles'
+import React, { useState } from 'react'
+import { menustyles } from './styles'
+import { useSession } from 'next-auth/react'
 
-class Burger extends React.Component {
-  showSettings (event) {
-    event.preventDefault();
+const Burger = () => {
+  const { data: session } = useSession()
+
+  const [isOpen, setOpen] = useState(false)
+
+  const handleIsOpen = () => {
+    setOpen(!isOpen)
   }
 
-  render () {
-    // NOTE: You also need to provide styles, see https://github.com/negomi/react-burger-menu#styling
-    return (
-      <Menu styles={menustyles}>
-        <Link id="home" className="menu-item" href="/">Home</Link>
-      </Menu>
-    );
+  const closeSideBar = () => {
+    setOpen(false)
   }
+
+  return (
+    <Menu
+      isOpen={isOpen}
+      onOpen={handleIsOpen}
+      onClose={handleIsOpen}
+      styles={menustyles}
+    >
+      <Link id="home" className="menu-item" href="/">
+        <div onClick={closeSideBar}>Home</div>
+      </Link>
+      <Link href={'/profile'}>
+        <div onClick={closeSideBar}>Profile</div>
+      </Link>
+    </Menu>
+  )
 }
 
 export default Burger
