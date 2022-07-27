@@ -1,12 +1,12 @@
 import { createGlobalStyle } from 'styled-components';
-import { primaryBackground } from './constants';
+import { primary } from './constants';
  
 const GlobalStyle = createGlobalStyle`
   
   body {
     margin: 0;
     padding: 0;
-    background: ${primaryBackground};
+    background: ${primary};
     font-family: Open-Sans, Helvetica, Sans-Serif;
   }
 `;

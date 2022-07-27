@@ -1,29 +1,28 @@
 import React, { useEffect } from 'react'
 import { getProviders, signIn, useSession } from 'next-auth/react'
 import { useRouter } from 'next/router'
+import { Button } from '../../components/Button/styles'
+import { Container } from '../../styles/profile'
 
 const Signin = ({ providers }) => {
-  const { status } = useSession()
+  const { data: session } = useSession()
   const router = useRouter()
 
-  useEffect(() => {
-    console.log(status)
-    if (status === 'authenticated') {
-      router.push('/')
-    }
-  }, [])
-
-  return (
-    <>
-      {Object.values(providers).map((provider) => (
-        <div key={provider.name}>
-          <button onClick={() => signIn(provider.id)}>
-            Sign in with {provider.name}
-          </button>
-        </div>
-      ))}
-    </>
-  )
+  if (session) {
+    router.back()
+  } else {
+    return (
+      <Container>
+        {Object.values(providers).map((provider) => (
+          <div key={provider.name}>
+            <Button onClick={() => signIn(provider.id)}>
+              Sign in with {provider.name}
+            </Button>
+          </div>
+        ))}
+      </Container>
+    )
+  }
 }
 
 export async function getServerSideProps(context) {

@@ -21,19 +21,21 @@ export const menustyles = {
   },
   bmMenuWrap: {
     position: 'fixed',
-    height: '100%'
+    height: '100%',
+    transition: '350ms'
   },
   bmMenu: {
-    background: '#373a47',
+    background: '#910f3f',
     padding: '2.5em 1.5em 0',
-    fontSize: '1.15em'
+    fontSize: '1.15em',
   },
   bmMorphShape: {
     fill: '#373a47'
   },
   bmItemList: {
     color: '#b8b7ad',
-    padding: '0.8em'
+    padding: '0.8em',
+    height: '90%',
   },
   bmItem: {
     display: 'inline-block'

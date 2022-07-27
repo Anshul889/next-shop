@@ -5,9 +5,12 @@ import { useEffect, useState } from 'react'
 import { db } from '../firebase'
 
 export default function Home() {
+  const [counter, setCounter] = useState('')
+
   const fetchData = async () => {
     const docRef = doc(db, 'counter', 'reactcounter')
-    const docSnap = await getDoc(docRef)
+    const docSnap = await getDoc(docRef);
+    setCounter(docSnap.data())
   }
 
   useEffect(() => {
@@ -15,7 +18,7 @@ export default function Home() {
     fetchData()
     let end = performance.now()
     console.log(end - start)
-  })
+  }, [])
 
-  return <div>Holla</div>
+  return <div>{counter.total}</div>
 }

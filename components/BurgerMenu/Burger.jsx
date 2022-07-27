@@ -27,9 +27,11 @@ const Burger = () => {
       <Link id="home" className="menu-item" href="/">
         <div onClick={closeSideBar}>Home</div>
       </Link>
-      <Link href={'/profile'}>
+      {session ? <Link href={'/profile'}>
         <div onClick={closeSideBar}>Profile</div>
-      </Link>
+      </Link> : <Link href={'/auth/signin'}>
+        <div onClick={closeSideBar}>Login</div>
+      </Link>}
     </Menu>
   )
 }
