@@ -9,16 +9,25 @@ export default function Home() {
 
   const fetchData = async () => {
     const docRef = doc(db, 'counter', 'reactcounter')
-    const docSnap = await getDoc(docRef);
+    const docSnap = await getDoc(docRef)
     setCounter(docSnap.data())
   }
 
   useEffect(() => {
-    let start = performance.now();
+    let start = performance.now()
     fetchData()
     let end = performance.now()
     console.log(end - start)
   }, [])
 
-  return <div>{counter.total}</div>
+  return (
+    <>
+      <Head>
+        <title>Next Shop</title>
+        <meta property="og:description" content="Eddici Boy" />
+        <meta property="og:image" content="/ecom.jpg" />    
+      </Head>
+      <div>{counter.total}</div>
+    </>
+  )
 }
