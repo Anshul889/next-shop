@@ -1,6 +1,6 @@
 import NextAuth from 'next-auth/next'
 import GoogleProvider from 'next-auth/providers/google'
-import { FirestoreAdapter } from "@next-auth/firebase-adapter"
+import { FirestoreAdapter } from '@next-auth/firebase-adapter'
 
 export default NextAuth({
   providers: [
@@ -15,18 +15,18 @@ export default NextAuth({
   secret: process.env.NEXT_AUTH_SECRET,
   callbacks: {
     async session({ session, token, user }) {
-        session = {
-            ...session,
-            user: {
-                id: user.id,
-                ...session.user
-            }
-        }
-        return session
+      session = {
+        ...session,
+        user: {
+          id: user.id,
+          ...session.user,
+        },
       }
+      return session
+    },
   },
   secret: process.env.NEXT_AUTH_SECRET,
-    adapter: FirestoreAdapter({
+  adapter: FirestoreAdapter({
     apiKey: process.env.FIREBASE_API_KEY,
     appId: process.env.FIREBASE_APP_ID,
     authDomain: process.env.FIREBASE_AUTH_DOMAIN,

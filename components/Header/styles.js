@@ -22,10 +22,20 @@ export const Left = styled.div`
 
 export const Right = styled.div`
   display: grid;
-  grid-template-columns: 30px 30px;
+  grid-template-columns: 30px 30px 40px;
   align-items: center;
   column-gap: 20px;
   justify-content: end;
+  & > * {
+    text-decoration: none;
+  }
+
+  & > img {
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+    cursor: pointer;
+  }
   @media screen and (max-width: 768px) {
     align-self: center;
     grid-template-columns: 25px 25px;
