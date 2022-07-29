@@ -3,6 +3,7 @@ import thunk from 'redux-thunk'
 import { composeWithDevTools } from 'redux-devtools-extension'
 import { createWrapper } from 'next-redux-wrapper'
 import rootReducer from './root-reducer'
+import {persistStore} from 'redux-persist'
 
 // initial states here
 const initalState = {}
@@ -17,7 +18,14 @@ export const store = createStore(
   composeWithDevTools(applyMiddleware(...middleware))
 )
 
+let persistor = persistStore(store)
+
 // assigning store to next wrapper
 const makeStore = () => store
 
 export const wrapper = createWrapper(makeStore)
+
+export default persistor
+
+
+

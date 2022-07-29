@@ -1,17 +1,20 @@
 import { SessionProvider } from 'next-auth/react'
 import { Provider } from 'react-redux'
+import { PersistGate } from 'redux-persist/integration/react'
 import Header from '../components/Header/Header'
 import GlobalStyle from '../globalStyles'
-import { wrapper, store } from '../store/store'
+import persistor, { wrapper, store } from '../store/store'
 
 function App({ Component, pageProps: { session, ...pageProps } }) {
   return (
     <Provider store={store}>
-      <SessionProvider session={session}>
-        <GlobalStyle />
-        <Header />
-        <Component {...pageProps} />
-      </SessionProvider>
+      <PersistGate loading={null} persistor={persistor}>
+        <SessionProvider session={session}>
+          <GlobalStyle />
+          <Header />
+          <Component {...pageProps} />
+        </SessionProvider>
+      </PersistGate>
     </Provider>
   )
 }
