@@ -14,7 +14,7 @@ const Header = () => {
     <>
       <DContainer>
         <Left>
-          <Image src={logo} alt="" />
+          <Link href={'/'}><Image src={logo} alt="" /></Link>
           <div>Shop</div>
           <div>Meet us</div>
           <div>Recipes</div>
