@@ -22,7 +22,7 @@ const Header = () => {
         </Left>
         <Right>
           <Image src={search} alt="" />
-          <Image src={cart} alt="" />
+          <Link href={'/cart'}><a><Image src={cart} alt="" /></a></Link>
           {session ? <Link href="/profile"><img src={session.user.image} /></Link> : <div><Link href="/auth/signin">Login</Link></div>}
         </Right>
       </DContainer>
@@ -33,7 +33,7 @@ const Header = () => {
         </Logo>
         <Right>
           <Image src={search} alt="" />
-          <Image src={cart} alt="" />
+          <Link href={'/cart'}><a><Image src={cart} alt="" /></a></Link>
         </Right>
       </MContainer>
     </>

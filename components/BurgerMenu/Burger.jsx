@@ -32,6 +32,9 @@ const Burger = () => {
       </Link> : <Link href={'/auth/signin'}>
         <div onClick={closeSideBar}>Login</div>
       </Link>}
+      <Link id="shop" className="menu-item" href="/meal-starters">
+        <div onClick={closeSideBar}>Shop</div>
+      </Link>
     </Menu>
   )
 }
