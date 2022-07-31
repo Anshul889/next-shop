@@ -7,7 +7,6 @@ const index = ({ cart, addCart }) => {
   return (
     <div>
       <div>{cart}</div>
-      <Button onClick={() => addCart()}>Add</Button>
     </div>
   )
 }
@@ -16,8 +15,6 @@ const mapStateToProps = (state) => ({
   cart: state.cart,
 })
 
-const actions = {
-  addCart,
-}
 
-export default connect(mapStateToProps, actions)(index)
+
+export default connect(mapStateToProps)(index)

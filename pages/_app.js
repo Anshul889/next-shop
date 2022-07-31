@@ -5,7 +5,7 @@ import Header from '../components/Header/Header'
 import GlobalStyle from '../globalStyles'
 import persistor, { wrapper, store } from '../store/store'
 
-function App({ Component, pageProps: { session, ...pageProps } }) {
+const App = ({ Component, pageProps: { session, ...pageProps } }) => {
   return (
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>

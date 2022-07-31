@@ -1,7 +1,10 @@
 import { getDoc, doc } from 'firebase/firestore'
 import Head from 'next/head'
 import React from 'react'
+import { Button } from '../../components/Button/styles'
 import { db } from '../../firebase'
+import { addToCart } from '../../store/actions/cart.actions'
+import {connect} from 'react-redux'
 
 export async function getServerSideProps({ params: { id } }) {
   const response = await getDoc(doc(db, 'products', `${id}`))
@@ -11,7 +14,7 @@ export async function getServerSideProps({ params: { id } }) {
   }
 }
 
-const Product = ({ product }) => {
+const Product = ({ product, addToCart }) => {
   return (
     <div>
       <Head>
@@ -19,8 +22,14 @@ const Product = ({ product }) => {
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <div>{product.name}</div>
+      <Button onClick={() => addToCart(product)}>Add to Cart</Button>
+
     </div>
   )
 }
 
-export default Product
+const actions = {
+  addToCart
+}
+
+export default connect(null, actions)(Product)
