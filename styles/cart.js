@@ -52,3 +52,7 @@ justify-self: end;
 export const Price = styled.div`
 justify-self: end;
 `
+
+export const Subtotal = styled.div`
+
+`

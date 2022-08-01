@@ -15,7 +15,7 @@ export async function getServerSideProps({ params: { id } }) {
 }
 
 const Product = ({ product, addToCart, cart }) => {
-  console.log("cart", cart[0]);
+  console.log("cart", cart);
   const quantity = useRef(1)
   const isFound = cart.some(element => element.id === product.id);
 

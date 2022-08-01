@@ -1,7 +1,11 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Button } from '../components/Button/styles'
-import { removeFromCart } from '../store/actions/cart.actions'
+import {
+  removeFromCart,
+  increaseQuantity,
+  decreaseQuantity,
+} from '../store/actions/cart.actions'
 import {
   Categories,
   Category,
@@ -10,21 +14,19 @@ import {
   Item,
   Price,
   Remove,
+  Subtotal,
   UpdateQuantity,
 } from '../styles/cart'
 import trashcan from '../images/trash-can-light.svg'
 import Image from 'next/image'
 
-export const cart = ({ cart, removeFromCart }) => {
+export const cart = ({
+  cart,
+  removeFromCart,
+  increaseQuantity,
+  decreaseQuantity,
+}) => {
   return (
-    // <div>
-    //   {cart.length > 0 && cart.map((product,index) => {
-    //     return<div key={index}>
-    //       {product.name}
-    //       <Button onClick={() => removeFromCart(product)}>Delete</Button>
-    //     </div>
-    //   })}
-    // </div>
     <Container>
       <Heading>Your Cart</Heading>
       <Categories>
@@ -36,17 +38,29 @@ export const cart = ({ cart, removeFromCart }) => {
           return (
             <Item key={index}>
               <img src={product.imageURL} alt=""></img>
-              <div>{product.name} <br />${product.price}</div>
+              <div>
+                {product.name} <br />${product.price}
+              </div>
               <Price>${product.price * product.quantity}</Price>
               <UpdateQuantity>
-                <span>+</span><span>{product.quantity}</span><span style={{position: 'relative', top:'-2px'}}>-</span>
+                <span onClick={() => increaseQuantity(product)}>+</span>
+                <span>{product.quantity}</span>
+                <span
+                  onClick={() => decreaseQuantity(product)}
+                  style={{ position: 'relative', top: '-2px' }}
+                >
+                  -
+                </span>
               </UpdateQuantity>
               <Remove onClick={() => removeFromCart(product)}>
-                <Image src={trashcan} height="25" width="25" alt=''></Image>
+                <Image src={trashcan} height="25" width="25" alt=""></Image>
               </Remove>
             </Item>
           )
         })}
+        <Subtotal>
+            <h3>Subtotal : {cart.reduce((a, b) => a + b.total,0,)}</h3>
+        </Subtotal>
     </Container>
   )
 }
@@ -57,6 +71,8 @@ const mapStateToProps = (state) => ({
 
 const actions = {
   removeFromCart,
+  increaseQuantity,
+  decreaseQuantity,
 }
 
 export default connect(mapStateToProps, actions)(cart)
