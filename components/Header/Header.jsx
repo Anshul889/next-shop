@@ -15,7 +15,7 @@ const Header = () => {
       <DContainer>
         <Left>
           <Link href={'/'}><a><Image src={logo} alt="" /></a></Link>
-          <div>Shop</div>
+          <Link href={'/meal-starters'}><a><div>Shop</div></a></Link>
           <div>Meet us</div>
           <div>Recipes</div>
           <div>Contact</div>
