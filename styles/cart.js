@@ -78,6 +78,7 @@ export const Instructions = styled.div`
 
 export const Subtotal = styled.div`
   text-align: center;
+  padding-bottom: 40px;
   & > div {
     margin-bottom: 20px;
     font-size: 13px;

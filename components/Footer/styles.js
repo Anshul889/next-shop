@@ -11,6 +11,10 @@ export const Container = styled.div`
   grid-template-columns: 1fr 1fr 1fr;
   width: 90%;
   margin: 0 auto;
+  padding: 20px 0;
+  @media screen and (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
 `
 
 export const Social = styled.div`
@@ -20,6 +24,11 @@ export const Social = styled.div`
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   column-gap: 15px;
-  grid-row: 2 / span;
+  grid-row: 2 / span 1;
   grid-column: 1 / span 3;
+  @media screen and (max-width: 768px) {
+    width: 80%;
+    grid-row: 4 / span 1;
+    grid-column : 1/ span 1
+  }
 `

@@ -1,6 +1,6 @@
 export const menustyles = {
   bmBurgerButton: {
-    position: 'fixed',
+    position: 'absolute',
     width: '32px',
     height: '26px',
     left: '15px',
