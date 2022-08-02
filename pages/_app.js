@@ -1,6 +1,7 @@
 import { SessionProvider } from 'next-auth/react'
 import { Provider } from 'react-redux'
 import { PersistGate } from 'redux-persist/integration/react'
+import Footer from '../components/Footer/Footer'
 import Header from '../components/Header/Header'
 import GlobalStyle from '../globalStyles'
 import persistor, { wrapper, store } from '../store/store'
@@ -13,6 +14,7 @@ const App = ({ Component, pageProps: { session, ...pageProps } }) => {
           <GlobalStyle />
           <Header />
           <Component {...pageProps} />
+          <Footer />
         </SessionProvider>
       </PersistGate>
     </Provider>
