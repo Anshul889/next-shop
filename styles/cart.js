@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import { border, primary } from '../constants'
 
+
 export const Container = styled.div`
   width: 90%;
   margin: 0 auto;
@@ -9,6 +10,7 @@ export const Container = styled.div`
 
 export const Heading = styled.h1`
   font-size: 36px;
+  font-weight: 400;
 `
 
 export const Categories = styled.div`
@@ -16,10 +18,15 @@ export const Categories = styled.div`
   grid-template-columns: 1fr 1fr;
   font-size: 15px;
   border-bottom: 0.1px solid #80808080;
-  padding-bottom: 10px;
+  padding-bottom: 15px;
+  text-transform: uppercase;
 `
 
 export const Category = styled.div`
+  font-family: "Archivo", Helvetica, Sans-Serif;
+  font-size: 10px;
+  opacity: 0.85;
+  letter-spacing: .13rem;
   &:nth-child(2) {
     justify-self: end;
   }
@@ -29,7 +36,7 @@ export const Item = styled.div`
   display: grid;
   grid-template-columns: 1fr 1.4fr 0.3fr;
   gap: 10px;
-  padding: 15px 0;
+  padding: 25px 0;
   border-bottom: 0.1px solid #80808080;
   & > img {
     width: 100%;
@@ -38,7 +45,7 @@ export const Item = styled.div`
 `
 
 export const UpdateQuantity = styled.div`
-  font-size: 14px;
+  font-size: 20px;
   justify-self: center;
   & > span {
     padding-left: 14px;
@@ -56,6 +63,7 @@ export const Price = styled.div`
 `
 
 export const Instructions = styled.div`
+  margin: 20px 0;
   & > textarea {
     border-color: ${border};
     min-height: 100px;
@@ -74,5 +82,6 @@ export const Subtotal = styled.div`
     margin-bottom: 20px;
     font-size: 13px;
     color: rgba(61, 8, 27, 0.75);
+    opacity: 0.85;
   }
 `

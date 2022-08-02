@@ -7,7 +7,8 @@ export const menustyles = {
     top: '12.5px'
   },
   bmBurgerBars: {
-    background: '#373a47'
+    background: '#373a47',
+    height: '2px'
   },
   bmBurgerBarsHover: {
     background: '#a90000'
