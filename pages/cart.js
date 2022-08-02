@@ -11,6 +11,7 @@ import {
   Category,
   Container,
   Heading,
+  Instructions,
   Item,
   Price,
   Remove,
@@ -58,8 +59,14 @@ export const cart = ({
             </Item>
           )
         })}
+        <Instructions>
+          <div>Order special instructions</div>
+          <textarea></textarea>
+        </Instructions>
         <Subtotal>
-            <h3>Subtotal : {cart.reduce((a, b) => a + b.total,0,)}</h3>
+            <h3>Subtotal  ${cart.reduce((a, b) => a + b.total,0,)}</h3>
+            <div>Taxes and shipping calculated at checkout</div>
+            <Button full>Checkout</Button>
         </Subtotal>
     </Container>
   )

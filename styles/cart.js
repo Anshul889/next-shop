@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { border, primary } from '../constants'
 
 export const Container = styled.div`
   width: 90%;
@@ -7,7 +8,7 @@ export const Container = styled.div`
 `
 
 export const Heading = styled.h1`
-  font-size: 48px;
+  font-size: 36px;
 `
 
 export const Categories = styled.div`
@@ -29,6 +30,7 @@ export const Item = styled.div`
   grid-template-columns: 1fr 1.4fr 0.3fr;
   gap: 10px;
   padding: 15px 0;
+  border-bottom: 0.1px solid #80808080;
   & > img {
     width: 100%;
     grid-row: 1 / span 2;
@@ -36,23 +38,41 @@ export const Item = styled.div`
 `
 
 export const UpdateQuantity = styled.div`
-font-size: 14px;
-justify-self: center;
-& > span{
-  padding-left: 14px
-}
+  font-size: 14px;
+  justify-self: center;
+  & > span {
+    padding-left: 14px;
+  }
 `
 
 export const Remove = styled.div`
-grid-column: 3;
-grid-row: 2;
-justify-self: end;
+  grid-column: 3;
+  grid-row: 2;
+  justify-self: end;
 `
 
 export const Price = styled.div`
-justify-self: end;
+  justify-self: end;
+`
+
+export const Instructions = styled.div`
+  & > textarea {
+    border-color: ${border};
+    min-height: 100px;
+    width: 80%;
+    margin: 10px 0;
+    background-color: ${primary};
+    border-radius: 12px 12px 0 12px;
+    padding: 1rem 2rem;
+    border-width: 3px;
+  }
 `
 
 export const Subtotal = styled.div`
-
+  text-align: center;
+  & > div {
+    margin-bottom: 20px;
+    font-size: 13px;
+    color: rgba(61, 8, 27, 0.75);
+  }
 `

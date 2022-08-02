@@ -15,4 +15,5 @@ export const Button = styled.button`
   appearance: none;
   border-radius: 40px;
   font-size: 15px;
+  width: ${props => props.full? "100%" : "initial"}
 `

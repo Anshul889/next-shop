@@ -6,7 +6,7 @@ import { addCart } from '../store/actions/cart.actions'
 const index = ({ cart, addCart }) => {
   return (
     <div>
-      <div>{cart}</div>
+      <div>Ho</div>
     </div>
   )
 }
