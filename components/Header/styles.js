@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { secondary } from '../../constants'
 
 export const DContainer = styled.div`
   height: 56px;
@@ -56,4 +57,29 @@ export const MContainer = styled.div`
 
 export const Logo = styled.div`
 align-self: center;
+`
+
+export const Search = styled.div`
+grid-row: 1 / span 1;
+grid-column: 1/ span 1;
+`
+
+export const Cart = styled.div`
+grid-row: 1 / span 1;
+grid-column: 2/ span 1;
+`
+
+export const CartBubble = styled.div`
+grid-row: 1 / span 1;
+grid-column: 2/ span 1;
+align-self: start;
+justify-self: end;
+font-size: 9px;
+color: white;
+background-color: ${secondary};
+width: 12px;
+height: 12px;
+text-align: center;
+border-radius: 50%;
+z-index: 1000;
 `

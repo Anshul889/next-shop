@@ -37,3 +37,8 @@ export const Description = styled.div`
     margin: 10px auto;
   }
 `
+
+export const Added = styled.div`
+width: 90%;
+margin: 15px auto;
+`

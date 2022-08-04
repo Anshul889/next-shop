@@ -7,7 +7,7 @@ import { addToCart } from '../../store/actions/cart.actions'
 import { connect } from 'react-redux'
 import Carousel from '../../components/Carousel/Carousel'
 import styled from 'styled-components'
-import { Container, Description, Heading, Price, Select } from '../../styles/product'
+import { Added, Container, Description, Heading, Price, Select } from '../../styles/product'
 import Dropdown from '../../components/Dropdown/Dropdown'
 
 
@@ -57,7 +57,7 @@ const Product = ({ product, addToCart, cart }) => {
           </Button>
         </Container>
       )}
-      {isFound && <div>Item Added To cart!</div>}
+      {isFound && <Added>Item Added To cart!</Added>}
       </>
       <Description>
         <div>{product.description1}</div>

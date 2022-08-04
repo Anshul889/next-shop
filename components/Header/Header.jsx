@@ -1,5 +1,5 @@
 import React from 'react'
-import { DContainer, Left, Logo, MContainer, Right } from './styles'
+import { Cart, CartBubble, DContainer, Left, Logo, MContainer, Right, Search } from './styles'
 import search from '../../images/magnifying-glass-light.svg'
 import cart from '../../images/cart-shopping-light.svg'
 import logo from '../../images/Crave.webp'
@@ -7,8 +7,9 @@ import Image from 'next/image'
 import Burger from '../BurgerMenu/Burger'
 import Link from 'next/link'
 import { useSession } from 'next-auth/react'
+import { connect } from 'react-redux'
 
-const Header = () => {
+const Header = ({cartstate}) => {
   const {data: session} = useSession()
   return (
     <>
@@ -32,12 +33,17 @@ const Header = () => {
           <Image src={logo} alt="" />
         </Logo>
         <Right>
-          <Image src={search} alt="" />
-          <Link href={'/cart'}><a><Image src={cart} alt="" /></a></Link>
+          <Search><Image src={search} alt="" /></Search>
+          <Cart><Link href={'/cart'}><a><Image src={cart} alt="" /></a></Link></Cart>
+          {cartstate.length > 0 && <CartBubble>{cartstate.length}</CartBubble>}
         </Right>
       </MContainer>
     </>
   )
 }
 
-export default Header
+const mapStateToProps = (state) => ({
+  cartstate: state.cart
+})
+
+export default connect(mapStateToProps)(Header)
