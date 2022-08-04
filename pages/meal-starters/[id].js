@@ -5,26 +5,35 @@ import { Button } from '../../components/Button/styles'
 import { db } from '../../firebase'
 import { addToCart } from '../../store/actions/cart.actions'
 import { connect } from 'react-redux'
+import Carousel from '../../components/Carousel/Carousel'
 
 export async function getServerSideProps({ params: { id } }) {
   const response = await getDoc(doc(db, 'products', `${id}`))
-  const product = {...response.data(), id: response.id}
+  const product = { ...response.data(), id: response.id }
   return {
     props: { product },
   }
 }
 
 const Product = ({ product, addToCart, cart }) => {
-  console.log("cart", cart);
+  console.log('cart', product)
   const quantity = useRef(1)
-  const isFound = cart.some(element => element.id === product.id);
+  const isFound = cart.some((element) => element.id === product.id)
 
   return (
+    
     <div>
       <Head>
         <title>{product.name}</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
+      <>
+      <Carousel
+        url1={product.imageURL}
+        url2={product.imageURL2}
+        url3={product.imageURL3}
+        url4={product.imageURL4}
+      />
       <div>{product.name}</div>
       {!isFound && (
         <div>
@@ -43,9 +52,8 @@ const Product = ({ product, addToCart, cart }) => {
           </Button>
         </div>
       )}
-       {isFound && (
-         <div>Item Added To cart!</div>
-      )}
+      {isFound && <div>Item Added To cart!</div>}
+      </>
     </div>
   )
 }
