@@ -6,6 +6,10 @@ import { db } from '../../firebase'
 import { addToCart } from '../../store/actions/cart.actions'
 import { connect } from 'react-redux'
 import Carousel from '../../components/Carousel/Carousel'
+import styled from 'styled-components'
+import { Container, Description, Heading, Price, Select } from '../../styles/product'
+import Dropdown from '../../components/Dropdown/Dropdown'
+
 
 export async function getServerSideProps({ params: { id } }) {
   const response = await getDoc(doc(db, 'products', `${id}`))
@@ -34,26 +38,33 @@ const Product = ({ product, addToCart, cart }) => {
         url3={product.imageURL3}
         url4={product.imageURL4}
       />
-      <div>{product.name}</div>
+      <Heading>{product.name}</Heading>
+      <Price>${product.price}.00</Price>
       {!isFound && (
-        <div>
+        <Container>
           <form>
-            <select id="count" name="count" ref={quantity}>
+            <Select id="count" name="count" ref={quantity}>
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
               <option value="4">4</option>
-            </select>
+            </Select>
           </form>
-          <Button
+          <Button full
             onClick={() => addToCart(product, parseInt(quantity.current.value))}
           >
             Add to Cart
           </Button>
-        </div>
+        </Container>
       )}
       {isFound && <div>Item Added To cart!</div>}
       </>
+      <Description>
+        <div>{product.description1}</div>
+        <div>{product.description2}</div>
+      </Description>
+      <Dropdown name={'Ingredients'} description={product.ingredients} contains={product.contains}/>
+      <Dropdown name={'Nutrional Info'} servings={product.servings} servingsSize={product.servingsSize}/>
     </div>
   )
 }
