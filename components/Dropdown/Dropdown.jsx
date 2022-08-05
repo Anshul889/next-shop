@@ -14,9 +14,9 @@ const Dropdown = ({ name, description, contains, servings, servingsSize }) => {
     <Container>
       <h3>{name}</h3>
       {isOpen ? (
-        <Image src={down} width={10} height={10} alt="" onClick={handleClick} />
-      ) : (
         <Image src={up} width={10} height={10} alt="" onClick={handleClick} />
+      ) : (
+        <Image src={down} width={10} height={10} alt="" onClick={handleClick} />
       )}
       {isOpen && (
         <div>
