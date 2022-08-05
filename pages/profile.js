@@ -4,6 +4,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { Button } from '../components/Button/styles'
 import { Container } from '../styles/profile'
+import ContactForm from '../components/ContactForm/ContactForm'
 
 const Profile = () => {
   const { data: session } = useSession()
@@ -13,6 +14,7 @@ const Profile = () => {
         <img src={session.user.image} alt="" />
         <div>{session.user.name}</div>
         <Button onClick={() => signOut()}>Sign Out</Button>
+        <ContactForm />
       </Container>
     )
   } else {
