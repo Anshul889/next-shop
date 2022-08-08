@@ -10,6 +10,8 @@ import styled from 'styled-components'
 import { Added, Container, Description, Heading, Price, Select } from '../../styles/product'
 import Dropdown from '../../components/Dropdown/Dropdown'
 import ReviewForm from '../../components/ReviewForm/ReviewForm'
+import { objectToArray } from '../../utils/helpers'
+import Review from '../../components/Review/Review'
 
 
 export async function getServerSideProps({ params: { id } }) {
@@ -23,7 +25,9 @@ export async function getServerSideProps({ params: { id } }) {
 const Product = ({ product, addToCart, cart }) => {
   const quantity = useRef(1)
   const isFound = cart.some((element) => element.id === product.id)
-
+  let reviewArray = objectToArray(product.reviews)
+  
+  console.log(reviewArray)
   return (
     
     <div>
@@ -65,7 +69,10 @@ const Product = ({ product, addToCart, cart }) => {
       </Description>
       <Dropdown name={'Ingredients'} description={product.ingredients} contains={product.contains}/>
       <Dropdown name={'Nutrional Info'} servings={product.servings} servingsSize={product.servingsSize}/>
-      <ReviewForm />
+      <ReviewForm productId={product.id}/>
+      {reviewArray && reviewArray.map((review, index) => {
+        return <Review review={review} key={index}/>
+      }) }
     </div>
   )
 }

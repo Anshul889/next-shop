@@ -5,8 +5,11 @@ import { Input } from '../Input/styles'
 import StarRating from '../StarRating/StarRating'
 import { set, useForm } from 'react-hook-form'
 import { TextArea } from './styles'
+import {connect} from 'react-redux'
+import { addReview } from '../../store/actions/review.actions'
+import { useSession } from 'next-auth/react'
 
-const ReviewForm = () => {
+const ReviewForm = ({productId, addReview}) => {
   const {
     register,
     handleSubmit,
@@ -14,13 +17,17 @@ const ReviewForm = () => {
   } = useForm()
   const [rating, setRating] = useState(0)
   const [error, setError] = useState(false)
+
+  const {data: session} = useSession()
+
   return (
     <Form
-      onSubmit={handleSubmit((data) => {
+      onSubmit={handleSubmit( async(data) => {
         if (rating === 0) {
           setError(true)
         } else {
           console.log('data', data)
+          addReview(productId, session.user.id, rating, data, session.user.name, session.user.email)
         }
       })}
     >
@@ -40,4 +47,8 @@ const ReviewForm = () => {
   )
 }
 
-export default ReviewForm
+const actions = {
+  addReview
+}
+
+export default connect(null, actions)(ReviewForm)
