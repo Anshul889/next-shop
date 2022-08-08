@@ -9,6 +9,7 @@ import Carousel from '../../components/Carousel/Carousel'
 import styled from 'styled-components'
 import { Added, Container, Description, Heading, Price, Select } from '../../styles/product'
 import Dropdown from '../../components/Dropdown/Dropdown'
+import ReviewForm from '../../components/ReviewForm/ReviewForm'
 
 
 export async function getServerSideProps({ params: { id } }) {
@@ -20,7 +21,6 @@ export async function getServerSideProps({ params: { id } }) {
 }
 
 const Product = ({ product, addToCart, cart }) => {
-  console.log('cart', product)
   const quantity = useRef(1)
   const isFound = cart.some((element) => element.id === product.id)
 
@@ -65,6 +65,7 @@ const Product = ({ product, addToCart, cart }) => {
       </Description>
       <Dropdown name={'Ingredients'} description={product.ingredients} contains={product.contains}/>
       <Dropdown name={'Nutrional Info'} servings={product.servings} servingsSize={product.servingsSize}/>
+      <ReviewForm />
     </div>
   )
 }
