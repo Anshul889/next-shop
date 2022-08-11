@@ -27,7 +27,7 @@ const ReviewForm = ({productId, addReview}) => {
           setError(true)
         } else {
           console.log('data', data)
-          addReview(productId, session.user.id, rating, data, session.user.name, session.user.email)
+          addReview(productId, session.user.id, rating, data, session.user.name, session.user.image)
         }
       })}
     >
