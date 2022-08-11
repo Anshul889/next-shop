@@ -36,4 +36,5 @@ export const Delete = styled.div`
 color: red;
 text-decoration: underline;
 justify-self: end;
+cursor: pointer;
 `
