@@ -21,6 +21,10 @@ const GlobalStyle = createGlobalStyle`
     font-family: 'Mariposa', Helvetica, Sans-Serif;
     color: ${border}
   }
+  a{
+    text-decoration: none;
+    color: rgb(61, 8, 27);
+  }
 `
 
 export default GlobalStyle

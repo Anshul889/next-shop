@@ -20,7 +20,7 @@ export const Container = styled.div`
 export const Social = styled.div`
   width: 20%;
   height: 18px;
-  margin: 0 auto;
+  margin: 25px auto;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   column-gap: 15px;

@@ -28,7 +28,7 @@ export const menustyles = {
   bmMenu: {
     background: '#910f3f',
     padding: '2.5em 1.5em 0',
-    fontSize: '1.15em',
+    fontSize: '1.55em',
   },
   bmMorphShape: {
     fill: '#373a47'
@@ -39,7 +39,7 @@ export const menustyles = {
     height: '90%',
   },
   bmItem: {
-    display: 'inline-block'
+    display: 'inline-block',
   },
   bmOverlay: {
     background: 'rgba(0, 0, 0, 0.3)'

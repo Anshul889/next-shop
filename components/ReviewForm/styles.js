@@ -16,3 +16,8 @@ export const TextArea = styled.textarea`
   padding: 1rem;
   border-width: 3px;
 `
+
+export const Login = styled.div`
+text-decoration: underline;
+cursor: pointer;
+`

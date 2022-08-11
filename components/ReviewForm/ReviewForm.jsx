@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Button } from '../Button/styles'
-import { Form } from './styles'
+import { Form, Login } from './styles'
 import { Input } from '../Input/styles'
 import StarRating from '../StarRating/StarRating'
 import { set, useForm } from 'react-hook-form'
@@ -8,6 +8,7 @@ import { TextArea } from './styles'
 import {connect} from 'react-redux'
 import { addReview } from '../../store/actions/review.actions'
 import { useSession } from 'next-auth/react'
+import Link from 'next/link'
 
 const ReviewForm = ({productId, addReview}) => {
   const {
@@ -42,7 +43,8 @@ const ReviewForm = ({productId, addReview}) => {
         placeholder={'What did you like or dislike?'}
       ></TextArea>
       <p style={{ color: 'red' }}>{errors.review?.message}</p>
-      <Button type="submit">Submit</Button>
+      {session && <Button type="submit">Submit</Button>}
+      {!session && <Link href={'/auth/signin'}><Login>Login to submit a review</Login></Link>}
     </Form>
   )
 }

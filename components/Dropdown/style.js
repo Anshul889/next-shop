@@ -6,7 +6,7 @@ export const Container = styled.div`
   padding-top: 10px;
   border-top: 0.1px solid #80808080;
   width: 90%;
-  margin: 0 auto;
+  margin: 10px auto;
   font-family: 'Archivo', Helvetica, Sans-Serif;
   font-size: 15px;
   letter-spacing: 0.6px;

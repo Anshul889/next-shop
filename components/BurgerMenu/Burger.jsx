@@ -3,6 +3,11 @@ import { slide as Menu } from 'react-burger-menu'
 import React, { useState } from 'react'
 import { menustyles } from './styles'
 import { useSession } from 'next-auth/react'
+import styled from 'styled-components'
+
+const Item = styled.div`
+margin-bottom: 5px;
+`
 
 const Burger = () => {
   const { data: session } = useSession()
@@ -25,15 +30,15 @@ const Burger = () => {
       styles={menustyles}
     >
       <Link id="home" className="menu-item" href="/">
-        <div onClick={closeSideBar}>Home</div>
+        <Item onClick={closeSideBar}>Home</Item>
       </Link>
       {session ? <Link href={'/profile'}>
-        <div onClick={closeSideBar}>Profile</div>
+        <Item onClick={closeSideBar}>Profile</Item>
       </Link> : <Link href={'/auth/signin'}>
-        <div onClick={closeSideBar}>Login</div>
+        <Item onClick={closeSideBar}>Login</Item>
       </Link>}
       <Link id="shop" className="menu-item" href="/meal-starters">
-        <div onClick={closeSideBar}>Shop</div>
+        <Item onClick={closeSideBar}>Shop</Item>
       </Link>
     </Menu>
   )
