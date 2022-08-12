@@ -1,12 +1,13 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Button } from '../components/Button/styles'
+import Hero from '../components/Hero/Hero'
 import { addCart } from '../store/actions/cart.actions'
 
 const index = ({ cart, addCart }) => {
   return (
     <div>
-      <div>Home Page</div>
+      <div><Hero /></div>
     </div>
   )
 }

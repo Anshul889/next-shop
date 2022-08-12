@@ -16,6 +16,7 @@ export const Container = styled.div`
   letter-spacing: 0.6px;
   padding: 30px 0;
   h3, h4 {
+    font-family: 'Mariposa', Helvetica, Sans-Serif;
     color: rgba(242, 239, 221, 1);
     font-weight: 400;
   }
@@ -24,7 +25,6 @@ export const Container = styled.div`
     row-gap: 25px;
     h3,
     h4 {
-      font-family: 'Mariposa', Helvetica, Sans-Serif;
       font-size: 22px;
       margin-top: 0px;
     }
