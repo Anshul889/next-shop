@@ -1,9 +1,10 @@
 import { collection, getDocs, query, where } from 'firebase/firestore'
 import Link from 'next/link'
 import React, { useState } from 'react'
+import { Button } from '../../components/Button/styles'
 import Item from '../../components/Item/Item'
 import { db } from '../../firebase'
-import { Container, Heading, Wrapper } from '../../styles/products'
+import { Container, Filters, Heading, Wrapper } from '../../styles/products'
 
 export async function getServerSideProps() {
   const q = query(
@@ -23,6 +24,44 @@ export async function getServerSideProps() {
 
 const MealStarters = ({ products }) => {
   const [productState, setProduct] = useState(products)
+  const [sortBy, setActiveSort] = useState('none')
+
+  const [filter, setFilter] = useState('none')
+
+  const sortAscPrice = () => {
+    let sortedAscPrice = [...products].sort(function (a, b) {
+      var x = a.price
+      var y = b.price
+      if (x > y) {
+        return 1
+      }
+      if (x < y) {
+        return -1
+      }
+      return 0
+    })
+    setProduct(sortedAscPrice)
+    setActiveSort('sortAscPrice')
+    setFilter('none')
+  }
+  
+  const sortDscPrice = () => {
+    let sortedDscPrice = [...products].sort(function (a, b) {
+      var x = a.price
+      var y = b.price
+      if (x > y) {
+        return -1
+      }
+      if (x < y) {
+        return 1
+      }
+      return 0
+    })
+    setProduct(sortedDscPrice)
+    setActiveSort('sortDscPrice')
+    setFilter('none')
+  }
+  
   return (
     <Wrapper>
       <Heading>
@@ -33,6 +72,19 @@ const MealStarters = ({ products }) => {
           party!
         </p>
       </Heading>
+      <Filters>
+      {sortBy !== 'sortAscPrice' && sortBy !== 'sortDscPrice' && (
+            <Button onClick={() => sortDscPrice()} filters>
+              Price
+            </Button>
+          )}
+          {sortBy === 'sortDscPrice' && (
+            <Button onClick={() => sortAscPrice()}>Price &#8593;</Button>
+          )}
+          {sortBy === 'sortAscPrice' && (
+            <Button onClick={() => sortDscPrice()}>Price &#8595;</Button>
+          )}
+      </Filters>
       <Container>
         {productState?.map((product, index) => {
           return (
