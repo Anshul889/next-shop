@@ -4,17 +4,38 @@ import { primary, secondary } from '../../constants'
 export const Wrapper = styled.div`
   background-color: ${secondary};
   color: ${primary};
+  font-family: 'Archivo', Helvetica, Sans-Serif;
 `
 
 export const Container = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr;
   width: 90%;
   margin: 0 auto;
-  padding: 20px 0;
-  @media screen and (max-width: 768px) {
-    grid-template-columns: 1fr;
+  color: rgba(242, 239, 221, 0.65);
+  letter-spacing: 0.6px;
+  padding: 30px 0;
+  h3, h4 {
+    color: rgba(242, 239, 221, 1);
+    font-weight: 400;
   }
+  @media screen and (min-width: 768px) {
+    padding: 50px 0;
+    row-gap: 25px;
+    h3,
+    h4 {
+      font-family: 'Mariposa', Helvetica, Sans-Serif;
+      font-size: 22px;
+      margin-top: 0px;
+    }
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+`
+
+export const QuickLinks = styled.div`
+& > div{
+  margin-bottom: 10px;
+}
 `
 
 export const Social = styled.div`
@@ -29,6 +50,6 @@ export const Social = styled.div`
   @media screen and (max-width: 768px) {
     width: 80%;
     grid-row: 4 / span 1;
-    grid-column : 1/ span 1
+    grid-column: 1 / span 1;
   }
 `

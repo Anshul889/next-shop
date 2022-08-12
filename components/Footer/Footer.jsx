@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import React from 'react'
-import { Container, Social, Wrapper } from './styles'
+import { Container, QuickLinks, Social, Wrapper } from './styles'
 import logo from '../../images/Crave.webp'
 import twitter from '../../images/twitter.svg'
 import facebook from '../../images/square-facebook-brands.svg'
@@ -15,13 +15,13 @@ const Footer = () => {
         <div>
           <Image src={logo} />
         </div>
-        <div>
+        <QuickLinks>
           <h4>Quick Links</h4>
           <div>Shop All</div>
           <div>Meet us</div>
           <div>Recipes</div>
           <div>Contact</div>
-        </div>
+        </QuickLinks>
         <div>
           <h3>Our mission</h3>
           <div>
