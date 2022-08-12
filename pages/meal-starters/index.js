@@ -1,9 +1,9 @@
 import { collection, getDocs, query, where } from 'firebase/firestore'
 import Link from 'next/link'
-import React from 'react'
+import React, { useState } from 'react'
 import Item from '../../components/Item/Item'
 import { db } from '../../firebase'
-import { Container, Wrapper } from '../../styles/products'
+import { Container, Heading, Wrapper } from '../../styles/products'
 
 export async function getServerSideProps() {
   const q = query(
@@ -22,10 +22,19 @@ export async function getServerSideProps() {
 }
 
 const MealStarters = ({ products }) => {
+  const [productState, setProduct] = useState(products)
   return (
     <Wrapper>
+      <Heading>
+        <h1>Meal Starters</h1>
+        <p>
+          A meal starter is a pantry shortcut, with all the sauces, aromatics,
+          and seasonings you need. Just bring your own protein + veg to the
+          party!
+        </p>
+      </Heading>
       <Container>
-        {products?.map((product, index) => {
+        {productState?.map((product, index) => {
           return (
             // <Link key={product.id} href={`/meal-starters/${product.id}`}>
             //   <div>{product.name}</div>
