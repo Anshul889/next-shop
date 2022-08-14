@@ -6,6 +6,7 @@ width: 90%;
 display: grid;
 grid-template-columns: max-content 1fr;
 column-gap: 15px;
+padding-bottom: 40px;
 `
 
 export const ImageContainer = styled.div`

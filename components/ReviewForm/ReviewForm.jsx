@@ -18,7 +18,6 @@ const ReviewForm = ({productId, addReview}) => {
   } = useForm()
   const [rating, setRating] = useState(0)
   const [error, setError] = useState(false)
-
   const {data: session} = useSession()
 
   return (
@@ -28,7 +27,7 @@ const ReviewForm = ({productId, addReview}) => {
           setError(true)
         } else {
           console.log('data', data)
-          addReview(productId, session.user.id, rating, data, session.user.name, session.user.image)
+          addReview(productId,  rating, data)
         }
       })}
     >
@@ -49,8 +48,6 @@ const ReviewForm = ({productId, addReview}) => {
   )
 }
 
-const actions = {
-  addReview
-}
 
-export default connect(null, actions)(ReviewForm)
+
+export default ReviewForm
