@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import React from 'react'
 import { Button } from '../Button/styles'
 import { Background, Content, Wrapper } from './styles'
@@ -23,7 +24,7 @@ const Hero = () => {
       <Content>
           <h2>Meet your new favorite pantry staple!</h2>
           <p>Cook restaurant-quality Asian dishes in under 30 minutes with our meal starters.</p>
-          <Button>Shop Now</Button>
+          <Link href={'/meal-starters'}><Button>Shop Now</Button></Link>
         </Content>
     </Wrapper>
   )
