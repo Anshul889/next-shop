@@ -4,7 +4,7 @@ import { primary, border } from './constants'
 const GlobalStyle = createGlobalStyle`
    @font-face {
   font-family: 'Archivo';
-  src: url(/fonts/achivo.ttf) format('truetype');
+  src: url(/fonts/archivo.ttf) format('truetype');
   font-weight: 400;
   font-style: normal;
   }
