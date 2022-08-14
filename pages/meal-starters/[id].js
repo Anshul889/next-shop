@@ -1,4 +1,4 @@
-import { getDoc, doc, updateDoc } from 'firebase/firestore'
+import { getDoc, doc, updateDoc, deleteField } from 'firebase/firestore'
 import Head from 'next/head'
 import React, { useRef, useState } from 'react'
 import { Button } from '../../components/Button/styles'
@@ -19,7 +19,7 @@ import ReviewForm from '../../components/ReviewForm/ReviewForm'
 import { objectToArray } from '../../utils/helpers'
 import Review from '../../components/Review/Review'
 import { useSession } from 'next-auth/react'
-import { deleteReview } from '../../store/actions/review.actions'
+import { async } from '@firebase/util'
 
 export async function getServerSideProps({ params: { id } }) {
   const response = await getDoc(doc(db, 'products', `${id}`))
@@ -29,7 +29,7 @@ export async function getServerSideProps({ params: { id } }) {
   }
 }
 
-const Product = ({ product, addToCart, cart, deleteReview }) => {
+const Product = ({ product, addToCart, cart }) => {
   const quantity = useRef(1)
   const { data: session } = useSession()
   const [reviewArray, setReview] = useState(objectToArray(product.reviews))
@@ -62,6 +62,18 @@ const Product = ({ product, addToCart, cart, deleteReview }) => {
     }
   }
 
+  const deleteReview = async(productId) => {
+    const newArr = [...reviewArray.filter(x => x.id !== session.user.id)]
+    setReview(newArr);
+    try {
+      const docRef = doc(db, 'products', productId)
+      const response = await updateDoc(docRef, {
+        [`reviews.${session.user.id}`]: deleteField()
+      })
+    } catch(e) {
+      console.log(e)
+    }
+  }
   const isFound = cart.some((element) => element.id === product.id)
 
   let completedReview
@@ -72,6 +84,7 @@ const Product = ({ product, addToCart, cart, deleteReview }) => {
   } else {
     completedReview = false
   }
+  console.log('review array', reviewArray)
   return (
     <div>
       <Head>
@@ -148,7 +161,6 @@ const mapStateToProps = (state) => ({
 
 const actions = {
   addToCart,
-  deleteReview,
 }
 
 export default connect(mapStateToProps, actions)(Product)
