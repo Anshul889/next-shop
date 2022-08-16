@@ -28,7 +28,7 @@ export const cart = ({
   increaseQuantity,
   decreaseQuantity,
 }) => {
-  console.log('cart', cart[0])
+  console.log('cart', cart)
   return (
     <Container>
       <Heading>Your Cart</Heading>
@@ -68,7 +68,7 @@ export const cart = ({
         <Subtotal>
             <h3>Subtotal  ${cart.reduce((a, b) => a + b.total,0,)}</h3>
             <div>Taxes and shipping calculated at checkout</div>
-            <Button full onClick={() => createCheckOutSession(cart[0])}>Checkout</Button>
+            <Button full onClick={() => createCheckOutSession(cart)}>Checkout</Button>
         </Subtotal>
     </Container>
   )
