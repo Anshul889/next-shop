@@ -20,6 +20,7 @@ import {
 } from '../styles/cart'
 import trashcan from '../images/trash-can-light.svg'
 import Image from 'next/image'
+import createCheckOutSession from '../lib/checkout-session'
 
 export const cart = ({
   cart,
@@ -27,6 +28,7 @@ export const cart = ({
   increaseQuantity,
   decreaseQuantity,
 }) => {
+  console.log('cart', cart[0])
   return (
     <Container>
       <Heading>Your Cart</Heading>
@@ -66,7 +68,7 @@ export const cart = ({
         <Subtotal>
             <h3>Subtotal  ${cart.reduce((a, b) => a + b.total,0,)}</h3>
             <div>Taxes and shipping calculated at checkout</div>
-            <Button full>Checkout</Button>
+            <Button full onClick={() => createCheckOutSession(cart[0])}>Checkout</Button>
         </Subtotal>
     </Container>
   )

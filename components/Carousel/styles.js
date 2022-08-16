@@ -2,6 +2,9 @@ import styled from 'styled-components'
 
 export const Wrapper = styled.div`
   width: 100%;
+  @media screen and (min-width: 768px) {
+    display: none;
+  }
 `
 
 export const Container = styled.div`
