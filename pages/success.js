@@ -7,8 +7,7 @@ const Success = () => {
   const { session_id } = router.query
 
   const createOrder = async (session_id) => {
-    console.log('session', session_id);
-    const response = await axios.post('/api/retrieve-stripe-session', {
+    const response = await axios.post('/api/create-order', {
       session_id,
     })
   }
