@@ -6,7 +6,7 @@ async function CreateStripeSession(req, res) {
   const redirectURL =
     process.env.NODE_ENV === 'development'
       ? 'http://localhost:3000/'
-      : 'https://next-shop-lime.vercel.app/stripe'
+      : 'https://next-shop-lime.vercel.app/'
       
   let transformedItems = []
 
