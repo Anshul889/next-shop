@@ -18,7 +18,7 @@ async function CreateOrder(req, res) {
       })
     }
   }
-  res.status(200).json({ name: 'John Doe' }) //fix
+  res.status(200).json({ id: session_id }) //fix
 }
 
 export default CreateOrder
