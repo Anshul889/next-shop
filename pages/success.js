@@ -14,9 +14,11 @@ const Success = () => {
   }
 
   useEffect(() => {
+    if(session_id){
     createOrder(session_id)
+    }
   }, [session_id])
-  return <div>Payment Successful {session_id}</div>
+  return <div>Payment Successful</div>
 }
 
 export default Success
