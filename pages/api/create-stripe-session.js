@@ -5,23 +5,9 @@ async function CreateStripeSession(req, res) {
 
   const redirectURL =
     process.env.NODE_ENV === 'development'
-      ? 'http://localhost:3000/payment'
+      ? 'http://localhost:3000/'
       : 'https://next-shop-lime.vercel.app/stripe'
-
-  // const transformedItem = {
-  //   price_data: {
-  //     currency: 'usd',
-  //     product_data: {
-  //       images: [item.imageURL],
-  //       name: item.name,
-  //     },
-  //     unit_amount: item.price * 100,
-  //   },
-  //   description: item.description1,
-  //   quantity: item.quantity,
-  // };
-
-   console.log('logged items', items)
+      
   let transformedItems = []
 
   for (let i = 0; i < items.length; i++) {
@@ -43,7 +29,7 @@ async function CreateStripeSession(req, res) {
     payment_method_types: ['card'],
     line_items: transformedItems,
     mode: 'payment',
-    success_url: redirectURL + '/success',
+    success_url: redirectURL + "/success?session_id={CHECKOUT_SESSION_ID}",
     cancel_url: redirectURL + '/failed',
     metadata: {
       images: items[0].imageURL,
