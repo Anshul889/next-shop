@@ -1,5 +1,5 @@
 import { createReducer } from '../../../utils/reducerUtils'
-import { ADD_TO_CART, DECREASE_QUANTITY, GET_CART, INCREASE_QUANTITY, REMOVE_FROM_CART } from '../../constants/cart.constants'
+import { ADD_TO_CART, CLEART_CART, DECREASE_QUANTITY, GET_CART, INCREASE_QUANTITY, REMOVE_FROM_CART } from '../../constants/cart.constants'
 
 const initialState = []
 
@@ -29,10 +29,15 @@ const removeFromCart = (state, payload) => {
   return[...state.filter(x => x.id !== payload.id)]
 }
 
+const clearCart = (state) => {
+  return []
+}
+
 export default createReducer(initialState, {
   [GET_CART]: getCart,
   [ADD_TO_CART]: addToCart,
   [REMOVE_FROM_CART]: removeFromCart,
   [INCREASE_QUANTITY]: increaseQuantity,
-  [DECREASE_QUANTITY]: decreaseQuantity
+  [DECREASE_QUANTITY]: decreaseQuantity,
+  [CLEART_CART]: clearCart
 })

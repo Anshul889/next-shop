@@ -1,5 +1,7 @@
+import { async } from '@firebase/util'
 import {
   ADD_TO_CART,
+  CLEART_CART,
   DECREASE_QUANTITY,
   INCREASE_QUANTITY,
   REMOVE_FROM_CART,
@@ -38,4 +40,8 @@ export const decreaseQuantity = (product) => async (dispatch) => {
     total: product.total - product.price,
   }
   dispatch({ type: DECREASE_QUANTITY, payload: newProduct })
+}
+
+export const clearCart = () => async(dispatch) => {
+  dispatch({type: CLEART_CART})
 }

@@ -1,8 +1,10 @@
 import React, { useEffect } from 'react'
 import { useRouter } from 'next/router'
 import axios from 'axios'
+import { connect } from 'react-redux'
+import { clearCart } from '../store/actions/cart.actions'
 
-const Success = () => {
+const Success = ({clearCart}) => {
   const router = useRouter()
   const { session_id } = router.query
 
@@ -17,9 +19,14 @@ const Success = () => {
   useEffect(() => {
     if(session_id){
     createOrder(session_id)
+    clearCart()
     }
   }, [session_id])
   return <div>Payment Successful</div>
 }
 
-export default Success
+const actions = {
+  clearCart
+}
+
+export default connect(null, actions)(Success)

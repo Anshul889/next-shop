@@ -84,7 +84,6 @@ const Product = ({ product, addToCart, cart }) => {
   } else {
     completedReview = false
   }
-  console.log('review array', reviewArray)
   return (
     <div>
       <Head>
