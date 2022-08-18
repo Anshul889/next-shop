@@ -82,4 +82,12 @@ height: 12px;
 text-align: center;
 border-radius: 50%;
 z-index: 1000;
+@media screen and (min-width: 768px) {
+  position: relative;
+  font-size: 12px;
+  height: 16px;
+  width: 16px;
+  margin-top: 5px;
+  left: 3px;
+}
 `

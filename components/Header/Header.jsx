@@ -23,7 +23,8 @@ const Header = ({cartstate}) => {
         </Left>
         <Right>
           <Image src={search} alt="" />
-          <Link href={'/cart'}><a><Image src={cart} alt="" /></a></Link>
+          <Cart><Link href={'/cart'}><a><Image src={cart} alt="" /></a></Link></Cart>
+          {cartstate.length > 0 && <CartBubble>{cartstate.length}</CartBubble>}
           {session ? <Link href="/profile"><img src={session.user.image} /></Link> : <div><Link href="/auth/signin">Login</Link></div>}
         </Right>
       </DContainer>

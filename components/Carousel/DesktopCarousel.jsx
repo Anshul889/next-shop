@@ -1,3 +1,4 @@
+/* eslint-disable react/no-children-prop */
 import { CarouselProvider, Image, Slide, Slider, ButtonNext, ButtonBack, DotGroup} from "pure-react-carousel";
 import React from "react";
 import 'pure-react-carousel/dist/react-carousel.es.css';
@@ -12,16 +13,16 @@ const DesktopCarousel = ({imageURL, imageURL2, imageURL3, imageURL4}) => (
   ><div style={{position: 'relative'}}>
     <Slider>
       <Slide tag="a" index={0}>
-        <Image src={imageURL} />
+        <Image src={imageURL} alt=''/>
       </Slide>
       <Slide tag="a" index={1}>
-        <Image src={imageURL2} />
+        <Image src={imageURL2} alt=''/>
       </Slide>
       <Slide tag="a" index={2}>
-        <Image src={imageURL3} />
+        <Image src={imageURL3} alt=''/>
       </Slide>
       <Slide tag="a" index={3}>
-        <Image src={imageURL4} />
+        <Image src={imageURL4} alt=''/>
       </Slide>
     </Slider>
     <br></br>
