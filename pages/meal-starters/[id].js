@@ -10,9 +10,12 @@ import {
   Added,
   Container,
   Description,
+  DesktopWrapper,
+  Details,
   Heading,
   Price,
   Select,
+  Wrapper,
 } from '../../styles/product'
 import Dropdown from '../../components/Dropdown/Dropdown'
 import ReviewForm from '../../components/ReviewForm/ReviewForm'
@@ -20,6 +23,7 @@ import { objectToArray } from '../../utils/helpers'
 import Review from '../../components/Review/Review'
 import { useSession } from 'next-auth/react'
 import { async } from '@firebase/util'
+import DesktopCarousel from '../../components/Carousel/DesktopCarousel'
 
 export async function getServerSideProps({ params: { id } }) {
   const response = await getDoc(doc(db, 'products', `${id}`))
@@ -90,13 +94,20 @@ const Product = ({ product, addToCart, cart }) => {
         <title>{product.name}</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
-      <>
+      <Wrapper>
         <Carousel
           url1={product.imageURL}
           url2={product.imageURL2}
           url3={product.imageURL3}
           url4={product.imageURL4}
         />
+        <DesktopWrapper>
+        <DesktopCarousel imageURL={product.imageURL}
+          imageURL2={product.imageURL2}
+          imageURL3={product.imageURL3}
+          imageURL4={product.imageURL4}></DesktopCarousel>
+          </DesktopWrapper>
+        <Details>
         <Heading>{product.name}</Heading>
         <Price>${product.price}.00</Price>
         {!isFound && (
@@ -120,7 +131,6 @@ const Product = ({ product, addToCart, cart }) => {
           </Container>
         )}
         {isFound && <Added>Item Added To cart!</Added>}
-      </>
       <Description>
         <div>{product.description1}</div>
         <div>{product.description2}</div>
@@ -135,6 +145,8 @@ const Product = ({ product, addToCart, cart }) => {
         servings={product.servings}
         servingsSize={product.servingsSize}
       />
+      </Details>
+      </Wrapper>
       {!completedReview && isDisplayed && (
         <ReviewForm productId={product.id} addReview={addReview} />
       )}

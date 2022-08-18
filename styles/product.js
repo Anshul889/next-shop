@@ -1,6 +1,29 @@
 import styled from 'styled-components'
 import { primary } from '../constants'
 
+export const Wrapper = styled.div`
+display: grid;
+grid-template-columns: 1fr;
+@media screen and (min-width: 768px) {
+  grid-template-columns: 1fr 1fr;
+  width: 90%;
+  margin: 0 auto;
+  max-width: 1200px;
+  column-gap: 50px;
+}
+`
+export const DesktopWrapper = styled.div`
+
+@media screen and (max-width: 768px) {
+  display: none;
+}
+`
+
+
+export const Details = styled.div`
+
+`
+
 export const Heading = styled.h1`
   width: 90%;
   margin: 15px auto;

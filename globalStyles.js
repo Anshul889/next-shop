@@ -1,5 +1,5 @@
 import { createGlobalStyle } from 'styled-components'
-import { primary, border } from './constants'
+import { primary, border, secondary } from './constants'
 
 const GlobalStyle = createGlobalStyle`
    @font-face {
@@ -25,6 +25,27 @@ const GlobalStyle = createGlobalStyle`
     text-decoration: none;
     color: rgb(61, 8, 27);
   }
+  .carousel__dot {
+    background-color: lightgray;
+    border-radius: 50%;
+    height: 6px;
+    width: 6px;
+    border: none;
+    padding: 0px;
+}
+
+.carousel__dot--selected{
+  background-color: ${secondary};
+}
+
+.carousel__dot-group{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  width: 10%;
+  margin: 0 auto;
+  height: 12px;
+  justify-items: center;
+}
 `
 
 export default GlobalStyle
