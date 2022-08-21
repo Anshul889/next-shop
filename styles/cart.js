@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 import { border, primary } from '../constants'
 
-
 export const Container = styled.div`
   width: 90%;
   margin: 0 auto;
@@ -20,15 +19,26 @@ export const Categories = styled.div`
   border-bottom: 0.1px solid #80808080;
   padding-bottom: 15px;
   text-transform: uppercase;
+  @media screen and (min-width: 768px) {
+    grid-template-columns: 0.6fr 0.2fr 0.2fr;
+  }
 `
 
 export const Category = styled.div`
-  font-family: "Archivo", Helvetica, Sans-Serif;
+  font-family: 'Archivo', Helvetica, Sans-Serif;
   font-size: 10px;
   opacity: 0.85;
-  letter-spacing: .13rem;
-  &:nth-child(2) {
+  letter-spacing: 0.13rem;
+  &:nth-child(3) {
     justify-self: end;
+  }
+  @media screen and (min-width: 768px) {
+  }
+`
+
+export const Quantity = styled(Category)`
+  @media screen and (max-width: 768px) {
+    display: none;
   }
 `
 
@@ -42,6 +52,19 @@ export const Item = styled.div`
     width: 100%;
     grid-row: 1 / span 2;
   }
+  @media screen and (min-width: 768px) {
+    grid-template-columns: 0.5fr 1.9fr 0.6fr 0.5fr 0.5fr;
+    & > img {
+      grid-row: 1 / span 1;
+    }
+  }
+`
+
+export const Name = styled.div`
+  @media screen and (min-width: 768px) {
+    font-size: 18px;
+    padding-left: 10px;
+  }
 `
 
 export const UpdateQuantity = styled.div`
@@ -50,16 +73,38 @@ export const UpdateQuantity = styled.div`
   & > span {
     padding-left: 14px;
   }
+  @media screen and (min-width: 768px) {
+    justify-self: start;
+    grid-column: 3 / span 1;
+    grid-row: 1 / span 1;
+  }
 `
 
 export const Remove = styled.div`
   grid-column: 3;
   grid-row: 2;
   justify-self: end;
+  @media screen and (min-width: 768px) {
+    justify-self: start;
+    grid-column: 4 / span 1;
+    grid-row: 1 / span 1;
+  }
 `
 
 export const Price = styled.div`
   justify-self: end;
+  @media screen and (min-width: 768px) {
+    grid-column: 5 / span 1;
+  }
+`
+
+export const Wrapper = styled.div`
+  display: grid;
+  grid-template-columns: 1fr;
+  @media screen and (min-width: 768px) {
+    grid-template-columns: 1fr 1fr;
+    column-gap: 50px;
+  }
 `
 
 export const Instructions = styled.div`

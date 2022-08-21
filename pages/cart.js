@@ -13,10 +13,13 @@ import {
   Heading,
   Instructions,
   Item,
+  Name,
   Price,
+  Quantity,
   Remove,
   Subtotal,
   UpdateQuantity,
+  Wrapper,
 } from '../styles/cart'
 import trashcan from '../images/trash-can-light.svg'
 import Image from 'next/image'
@@ -34,6 +37,7 @@ export const cart = ({
       <Heading>Your Cart</Heading>
       <Categories>
         <Category>Product</Category>
+        <Quantity>Quantity</Quantity>
         <Category>Total</Category>
       </Categories>
       {cart.length > 0 &&
@@ -41,9 +45,9 @@ export const cart = ({
           return (
             <Item key={index}>
               <img src={product.imageURL} alt=""></img>
-              <div>
+              <Name>
                 {product.name} <br />${product.price}
-              </div>
+              </Name>
               <Price>${product.price * product.quantity}</Price>
               <UpdateQuantity>
                 <span onClick={() => increaseQuantity(product)}>+</span>
@@ -61,6 +65,7 @@ export const cart = ({
             </Item>
           )
         })}
+        <Wrapper>
         <Instructions>
           <div>Order special instructions</div>
           <textarea></textarea>
@@ -70,6 +75,7 @@ export const cart = ({
             <div>Taxes and shipping calculated at checkout</div>
             <Button full onClick={() => createCheckOutSession(cart)}>Checkout</Button>
         </Subtotal>
+        </Wrapper>
     </Container>
   )
 }
