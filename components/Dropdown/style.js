@@ -7,7 +7,7 @@ export const Container = styled.div`
   border-top: 0.1px solid #80808080;
   width: 90%;
   margin: 10px auto;
-  font-family: 'Archivo', Helvetica, Sans-Serif;
+  font-family: var(--font-secondary);
   font-size: 15px;
   letter-spacing: 0.6px;
   line-height: 27px;

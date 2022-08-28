@@ -32,7 +32,7 @@ export const Content = styled.div`
     margin: 20px auto;
   }
   p {
-    font-family: 'Archivo', Helvetica, Sans-Serif;
+    font-family: var(--font-archivo);
     letter-spacing: 0px;
     font-weight: 400;
     width: 80%;

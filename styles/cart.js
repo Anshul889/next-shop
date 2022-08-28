@@ -25,7 +25,7 @@ export const Categories = styled.div`
 `
 
 export const Category = styled.div`
-  font-family: 'Archivo', Helvetica, Sans-Serif;
+  font-family: var(--font-secondary);
   font-size: 10px;
   opacity: 0.85;
   letter-spacing: 0.13rem;

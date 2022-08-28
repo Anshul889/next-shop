@@ -4,7 +4,7 @@ import { primary, secondary } from '../../constants'
 export const Wrapper = styled.div`
   background-color: ${secondary};
   color: ${primary};
-  font-family: 'Archivo', Helvetica, Sans-Serif;
+  font-family: var(--font-secondary);
 `
 
 export const Container = styled.div`

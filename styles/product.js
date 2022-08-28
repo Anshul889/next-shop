@@ -2,27 +2,23 @@ import styled from 'styled-components'
 import { primary } from '../constants'
 
 export const Wrapper = styled.div`
-display: grid;
-grid-template-columns: 1fr;
-@media screen and (min-width: 768px) {
-  grid-template-columns: 1fr 1fr;
-  width: 90%;
-  margin: 0 auto;
-  max-width: 1200px;
-  column-gap: 50px;
-}
+  display: grid;
+  grid-template-columns: 1fr;
+  @media screen and (min-width: 768px) {
+    grid-template-columns: 1fr 1fr;
+    width: 90%;
+    margin: 0 auto;
+    max-width: 1200px;
+    column-gap: 50px;
+  }
 `
 export const DesktopWrapper = styled.div`
-
-@media screen and (max-width: 768px) {
-  display: none;
-}
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
 `
 
-
-export const Details = styled.div`
-
-`
+export const Details = styled.div``
 
 export const Heading = styled.h1`
   width: 90%;
@@ -51,7 +47,7 @@ export const Select = styled.select`
 export const Description = styled.div`
   width: 90%;
   margin: 15px auto;
-  font-family: "Archivo", Helvetica, Sans-Serif;
+  font-family: var(--font-secondary);
   font-size: 15px;
   letter-spacing: 0.6px;
   line-height: 27px;
@@ -62,6 +58,6 @@ export const Description = styled.div`
 `
 
 export const Added = styled.div`
-width: 90%;
-margin: 15px auto;
+  width: 90%;
+  margin: 15px auto;
 `

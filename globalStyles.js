@@ -14,11 +14,15 @@ const GlobalStyle = createGlobalStyle`
   font-weight: 400;
   font-style: normal;
   }
+  :root{
+  --font-primary: 'Mariposa', Helvetica, Sans-Serif;
+  --font-secondary: 'Archivo', Helvetica, Sans-Serif;
+}
   body {
     margin: 0;
     padding: 0;
     background: ${primary};
-    font-family: 'Mariposa', Helvetica, Sans-Serif;
+    font-family: var(--font-primary);
     color: ${border}
   }
   a{
