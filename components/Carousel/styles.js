@@ -12,7 +12,6 @@ export const Container = styled.div`
   grid-template-columns: repeat(4, 90%);
   overflow-x: scroll;
   padding-left: 5%;
-  position: relative;
   ::-webkit-scrollbar {
     display: none;
   }
