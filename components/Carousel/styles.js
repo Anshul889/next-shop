@@ -11,8 +11,8 @@ export const Container = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 90%);
   overflow-x: scroll;
-  padding: 0 5%;
-  column-gap: 15px;
+  padding-left: 5%;
+  position: relative;
   ::-webkit-scrollbar {
     display: none;
   }
