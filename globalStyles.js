@@ -7,12 +7,14 @@ const GlobalStyle = createGlobalStyle`
   src: url(/fonts/archivo.ttf) format('truetype');
   font-weight: 400;
   font-style: normal;
+  font-display: fallback;
   }
    @font-face {
   font-family: 'Mariposa';
   src: url(/fonts/Mariposa.otf);
   font-weight: 400;
   font-style: normal;
+  font-display: fallback;
   }
   :root{
   --font-primary: 'Mariposa', Helvetica, Sans-Serif;

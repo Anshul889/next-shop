@@ -1,11 +1,15 @@
-import { getDoc, doc, updateDoc, deleteField } from 'firebase/firestore'
+import { deleteField, doc, getDoc, updateDoc } from 'firebase/firestore'
+import { useSession } from 'next-auth/react'
 import Head from 'next/head'
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState, Suspense } from 'react'
+import { connect } from 'react-redux'
 import { Button } from '../../components/Button/styles'
+import Carousel from '../../components/Carousel/Carousel'
+import DesktopCarousel from '../../components/Carousel/DesktopCarousel'
+import Dropdown from '../../components/Dropdown/Dropdown'
+import dynamic from 'next/dynamic'
 import { db } from '../../firebase'
 import { addToCart } from '../../store/actions/cart.actions'
-import { connect } from 'react-redux'
-import Carousel from '../../components/Carousel/Carousel'
 import {
   Added,
   Container,
@@ -15,15 +19,24 @@ import {
   Heading,
   Price,
   Select,
-  Wrapper,
+  Wrapper
 } from '../../styles/product'
-import Dropdown from '../../components/Dropdown/Dropdown'
-import ReviewForm from '../../components/ReviewForm/ReviewForm'
 import { objectToArray } from '../../utils/helpers'
-import Review from '../../components/Review/Review'
-import { useSession } from 'next-auth/react'
-import { async } from '@firebase/util'
-import DesktopCarousel from '../../components/Carousel/DesktopCarousel'
+
+const Review = dynamic(
+  () => import('../../components/Review/Review'),
+  {
+    suspense: true,
+  }
+)
+
+const ReviewForm = dynamic(
+  () => import('../../components/ReviewForm/ReviewForm'),
+  {
+    suspense: true,
+  }
+)
+
 
 export async function getServerSideProps({ params: { id } }) {
   const response = await getDoc(doc(db, 'products', `${id}`))
@@ -147,9 +160,12 @@ const Product = ({ product, addToCart, cart }) => {
       />
       </Details>
       </Wrapper>
+      <Suspense fallback={`Loading...`}>
       {!completedReview && isDisplayed && (
         <ReviewForm productId={product.id} addReview={addReview} />
       )}
+      </Suspense>
+      <Suspense fallback={`Loading...`}>
       {reviewArray &&
         reviewArray.map((review, index) => {
           return (
@@ -162,6 +178,7 @@ const Product = ({ product, addToCart, cart }) => {
             />
           )
         })}
+        </Suspense>
     </div>
   )
 }
