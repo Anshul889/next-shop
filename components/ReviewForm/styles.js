@@ -15,6 +15,7 @@ export const TextArea = styled.textarea`
   border-radius: 12px 12px 0 12px;
   padding: 1rem;
   border-width: 3px;
+  font-size: 16px;
 `
 
 export const Login = styled.div`
