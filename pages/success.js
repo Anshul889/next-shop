@@ -22,7 +22,7 @@ const Success = ({clearCart}) => {
     clearCart()
     }
   }, [session_id])
-  return <div>Payment Successful</div>
+  return <div style={{margin: "50px auto"}}>Payment Successful</div>
 }
 
 const actions = {

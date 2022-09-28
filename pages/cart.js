@@ -5,7 +5,6 @@ import {
   removeFromCart,
   increaseQuantity,
   decreaseQuantity,
-  clearCart,
 } from '../store/actions/cart.actions'
 import {
   Categories,
@@ -38,7 +37,6 @@ export const cart = ({
   removeFromCart,
   increaseQuantity,
   decreaseQuantity,
-  clearCart,
 }) => {
   console.log('cart', cart)
   return (
@@ -87,7 +85,6 @@ export const cart = ({
           </Suspense>
         </Subtotal>
       </Wrapper>
-      <Button onClick={() => clearCart()}>Clear</Button>
     </Container>
   )
 }
@@ -100,7 +97,6 @@ const actions = {
   removeFromCart,
   increaseQuantity,
   decreaseQuantity,
-  clearCart,
 }
 
 export default connect(mapStateToProps, actions)(cart)
