@@ -59,12 +59,13 @@ export const cart = ({
               <UpdateQuantity>
                 <span onClick={() => increaseQuantity(product)}>+</span>
                 <span>{product.quantity}</span>
+                {product.quantity > 0 &&
                 <span
                   onClick={() => decreaseQuantity(product)}
                   style={{ position: 'relative', top: '-2px' }}
                 >
                   -
-                </span>
+                </span>}
               </UpdateQuantity>
               <Remove onClick={() => removeFromCart(product)}>
                 <Image src={trashcan} height="25" width="25" alt=""></Image>
